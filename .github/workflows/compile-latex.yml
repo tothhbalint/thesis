@@ -20,7 +20,7 @@ jobs:
       - name: Copy
         run: |
           mkdir out
-          cp ./thesis.pdf ./out/thesis.pdf
+          cp ./latex/src/thesis.pdf ./out/thesis.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: thesis
