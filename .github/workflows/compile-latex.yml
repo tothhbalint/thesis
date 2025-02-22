@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist_credentials: false
+          fetch_depth: 0
       - name: Build
         uses: xu-cheng/latex-action@v3
         with:
@@ -20,8 +23,8 @@ jobs:
       - name: Copy
         run: |
           mkdir out
-          cp ./latex/src/thesis.pdf ./out/thesis.pdf
-      - uses: actions/upload-artifact@v4
+          cp ./latex/src/thesis.pdf ./latex/pdf/thesis.pdf
+      - name: Commit & Push changes
+        uses: actions-js/push@v4
         with:
-          name: thesis
-          path: out/thesis.pdf
+              github_token: ${{ secrets.GITHUB_TOKEN }}
