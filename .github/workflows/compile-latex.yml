@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-  workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +16,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: thesis.tex
-          working_dir: ./thesis/src
+          working_directory: ./thesis/src
       - name: Copy
         run: |
           mkdir out
