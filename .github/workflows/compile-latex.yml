@@ -1,0 +1,29 @@
+name: Deploy PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: thesis.tex
+          working_dir: ./thesis/src
+      - name: Copy
+        run: |
+          mkdir out
+          cp ./thesis.pdf ./out/thesis.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thesis
+          path: out/thesis.pdf
