@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@master
         with:
           persist_credentials: false
           fetch_depth: 0
@@ -25,6 +25,6 @@ jobs:
           mkdir out
           cp ./latex/src/thesis.pdf ./latex/pdf/thesis.pdf
       - name: Commit & Push changes
-        uses: actions-js/push@v4
+        uses: actions-js/push@master
         with:
               github_token: ${{ secrets.GITHUB_TOKEN }}
