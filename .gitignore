@@ -95,3 +95,6 @@ sympy-plots-for-*.tex/
 *.xdy
 /tmp
 /out
+
+# swp files
+*.swp

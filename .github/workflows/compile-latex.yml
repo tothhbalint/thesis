@@ -16,7 +16,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: thesis.tex
-          working_directory: ./thesis/src
+          working_directory: latex/src
       - name: Copy
         run: |
           mkdir out
