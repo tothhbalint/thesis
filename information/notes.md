@@ -1,0 +1,61 @@
+- [The N version approach to fault tolerant software](https://www.researchgate.net/publication/3188553_The_N-Version_Approach_to_Fault-Tolerant_Software?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InNpZ251cCIsInBhZ2UiOiJwdWJsaWNhdGlvbiJ9fQ)
+    - nt/yh/zs
+        - ny >= z
+        - t - executions
+        - h - hardware channels
+        - s - software versions
+    - criterium:
+        - consistency of conditions and inputs
+        - reliable decision algorithm
+            - could also be multiplied
+    - faults:
+        - simplex: only one execution affected
+        - "M" faults:
+            - independent
+                - avoid by using different designs for each version (1T/NH/NS)
+                - no common cause
+            - related
+            - design faults
+        - similiar faults don't mean the same cause
+    - NVP
+        - decision algorithm is a generic consesus
+        - initial specification
+            - the function
+            - cross-check-points
+            - cross-check-vectors
+                - at each ccpoint
+            - decision algorithm at cc points
+            - response to the decision
+        - experiment examples:
+            - airport scheduler
+                - transactional problem
+                - TODO: check results/specification
+        - DEDIX
+- [Comparision of voting algorithms](https://www.researchgate.net/publication/3555054_A_comparison_of_voting_algorithms_for_n-version_programming)
+    - 3 version failure probability
+        - P = p^3 + 3p^2(1-p)
+            - poor predictor
+    - The problem
+        - automated factory
+    - voting algorithms
+        - goal is to reduce "false" identical failures
+        - 1. Composite/Version
+            - group output into fields
+            - find majority in groups
+            - give counter values based on matches with majority fields
+            - winner based on counter values, if equal take the first
+        - 2. Weighted Composite/Version
+            - same as 1., but weight groups when calculating counter values 
+        - 3. Composite:
+            - no counter values
+            - fields, where there is no majority are filled with version 1
+            - might vote false result, which matches no version's output
+        - 4. History:
+            - vote based on history
+                - the version winning the most majority votes in the last 500 or so executions will win
+        - 5. Acceptance test:
+            - Pass in versions decreasing in reliability, the first that satisfies the conditions wins
+
+        - Results:
+            - 5. is best
+            - First 3. are nearly the same
