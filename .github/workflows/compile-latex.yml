@@ -23,7 +23,8 @@ jobs:
       - name: Copy
         run: |
           mkdir out
-          cp ./latex/src/thesis.pdf ./latex/pdf/thesis.pdf
+          mv ./latex/src/thesis.pdf ./latex/pdf/thesis.pdf
+          git add ./latex/pdf
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
