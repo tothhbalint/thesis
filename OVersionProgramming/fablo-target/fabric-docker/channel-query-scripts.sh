@@ -26,58 +26,58 @@ channelQuery() {
 
     peerChannelList "cli.org3.example.com" "peer0.org3.example.com:7081"
 
-  elif
+  #elif
 
-    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-1" ] && [ "$3" = "org1" ] && [ "$4" = "peer0" ]
-  then
-
-    peerChannelGetInfo "version-channel-1" "cli.org1.example.com" "peer0.org1.example.com:7041"
-
-  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-1" ] && [ "$4" = "org1" ] && [ "$5" = "peer0" ]; then
-    TARGET_FILE=${6:-"$channel-config.json"}
-
-    peerChannelFetchConfig "version-channel-1" "cli.org1.example.com" "$TARGET_FILE" "peer0.org1.example.com:7041"
-
-  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-1" ] && [ "$4" = "org1" ] && [ "$5" = "peer0" ]; then
-    BLOCK_NAME=$2
-    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
-
-    peerChannelFetchBlock "version-channel-1" "cli.org1.example.com" "${BLOCK_NAME}" "peer0.org1.example.com:7041" "$TARGET_FILE"
-
-  elif
-    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-2" ] && [ "$3" = "org2" ] && [ "$4" = "peer0" ]
-  then
-
-    peerChannelGetInfo "version-channel-2" "cli.org2.example.com" "peer0.org2.example.com:7061"
-
-  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-2" ] && [ "$4" = "org2" ] && [ "$5" = "peer0" ]; then
-    TARGET_FILE=${6:-"$channel-config.json"}
-
-    peerChannelFetchConfig "version-channel-2" "cli.org2.example.com" "$TARGET_FILE" "peer0.org2.example.com:7061"
-
-  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-2" ] && [ "$4" = "org2" ] && [ "$5" = "peer0" ]; then
-    BLOCK_NAME=$2
-    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
-
-    peerChannelFetchBlock "version-channel-2" "cli.org2.example.com" "${BLOCK_NAME}" "peer0.org2.example.com:7061" "$TARGET_FILE"
-
-  elif
-    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-3" ] && [ "$3" = "org3" ] && [ "$4" = "peer0" ]
-  then
-
-    peerChannelGetInfo "version-channel-3" "cli.org3.example.com" "peer0.org3.example.com:7081"
-
-  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-3" ] && [ "$4" = "org3" ] && [ "$5" = "peer0" ]; then
-    TARGET_FILE=${6:-"$channel-config.json"}
-
-    peerChannelFetchConfig "version-channel-3" "cli.org3.example.com" "$TARGET_FILE" "peer0.org3.example.com:7081"
-
-  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-3" ] && [ "$4" = "org3" ] && [ "$5" = "peer0" ]; then
-    BLOCK_NAME=$2
-    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
-
-    peerChannelFetchBlock "version-channel-3" "cli.org3.example.com" "${BLOCK_NAME}" "peer0.org3.example.com:7081" "$TARGET_FILE"
-
+#    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-1" ] && [ "$3" = "org1" ] && [ "$4" = "peer0" ]
+#  then
+#
+#    peerChannelGetInfo "version-channel-1" "cli.org1.example.com" "peer0.org1.example.com:7041"
+#
+#  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-1" ] && [ "$4" = "org1" ] && [ "$5" = "peer0" ]; then
+#    TARGET_FILE=${6:-"$channel-config.json"}
+#
+#    peerChannelFetchConfig "version-channel-1" "cli.org1.example.com" "$TARGET_FILE" "peer0.org1.example.com:7041"
+#
+#  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-1" ] && [ "$4" = "org1" ] && [ "$5" = "peer0" ]; then
+#    BLOCK_NAME=$2
+#    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
+#
+#    peerChannelFetchBlock "version-channel-1" "cli.org1.example.com" "${BLOCK_NAME}" "peer0.org1.example.com:7041" "$TARGET_FILE"
+#
+#  elif
+#    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-2" ] && [ "$3" = "org2" ] && [ "$4" = "peer0" ]
+#  then
+#
+#    peerChannelGetInfo "version-channel-2" "cli.org2.example.com" "peer0.org2.example.com:7061"
+#
+#  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-2" ] && [ "$4" = "org2" ] && [ "$5" = "peer0" ]; then
+#    TARGET_FILE=${6:-"$channel-config.json"}
+#
+#    peerChannelFetchConfig "version-channel-2" "cli.org2.example.com" "$TARGET_FILE" "peer0.org2.example.com:7061"
+#
+#  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-2" ] && [ "$4" = "org2" ] && [ "$5" = "peer0" ]; then
+#    BLOCK_NAME=$2
+#    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
+#
+#    peerChannelFetchBlock "version-channel-2" "cli.org2.example.com" "${BLOCK_NAME}" "peer0.org2.example.com:7061" "$TARGET_FILE"
+#
+#  elif
+#    [ "$1" = "getinfo" ] && [ "$2" = "version-channel-3" ] && [ "$3" = "org3" ] && [ "$4" = "peer0" ]
+#  then
+#
+#    peerChannelGetInfo "version-channel-3" "cli.org3.example.com" "peer0.org3.example.com:7081"
+#
+#  elif [ "$1" = "fetch" ] && [ "$2" = "config" ] && [ "$3" = "version-channel-3" ] && [ "$4" = "org3" ] && [ "$5" = "peer0" ]; then
+#    TARGET_FILE=${6:-"$channel-config.json"}
+#
+#    peerChannelFetchConfig "version-channel-3" "cli.org3.example.com" "$TARGET_FILE" "peer0.org3.example.com:7081"
+#
+#  elif [ "$1" = "fetch" ] && [ "$3" = "version-channel-3" ] && [ "$4" = "org3" ] && [ "$5" = "peer0" ]; then
+#    BLOCK_NAME=$2
+#    TARGET_FILE=${6:-"$BLOCK_NAME.block"}
+#
+#    peerChannelFetchBlock "version-channel-3" "cli.org3.example.com" "${BLOCK_NAME}" "peer0.org3.example.com:7081" "$TARGET_FILE"
+#
   elif
     [ "$1" = "getinfo" ] && [ "$2" = "main-channel" ] && [ "$3" = "org1" ] && [ "$4" = "peer0" ]
   then
