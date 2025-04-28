@@ -1,0 +1,57 @@
+networks:
+  fabric_test:
+    external: true
+  basic:
+
+
+services:
+  peer:
+    build:
+      context: proxy_chaincode
+      dockerfile: Dockerfile
+    container_name: peer0org1_peer_ccaas
+    environment:
+      - CHAINCODE_ID=${CHAINCODE_ID}
+    ports:
+      - "2051:2051"
+      - "9999:9999"
+    networks:
+      - fabric_test
+      - basic
+
+  v1_cc:
+    build:
+      context: chaincodes/chaincode-kv-go
+      dockerfile: Dockerfile
+    container_name: v1_cc
+    environment:
+      - CORE_CHAINCODE_ID_NAME=v1
+      - CORE_PEER_TLS_ENABLED=false
+    networks:
+      - basic
+    depends_on:
+      - peer
+  v2_cc:
+    build:
+      context: chaincodes/chaincode-kv-node
+      dockerfile: Dockerfile
+    container_name: v2_cc
+    environment:
+      - CORE_CHAINCODE_ID_NAME=v2
+      - CORE_PEER_TLS_ENABLED=false
+    networks:
+      - basic
+    depends_on:
+      - peer
+  v3_cc:
+    build:
+      context: chaincodes/chaincode-kv-node-faulty
+      dockerfile: Dockerfile
+    container_name: v3_cc
+    environment:
+      - CORE_CHAINCODE_ID_NAME=v3
+      - CORE_PEER_TLS_ENABLED=false
+    networks:
+      - basic
+    depends_on:
+      - peer
