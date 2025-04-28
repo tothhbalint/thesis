@@ -4,6 +4,8 @@
 ```
 ./setup_network.sh
 ```
+
+After this the docker compose project can be started and everything should be working fine!
 ### Setup by hand
 First get the fabric samples/binaries:
 ```
