@@ -1,0 +1,54 @@
+diff --git a/test-network/configtx/configtx.yaml b/test-network/configtx/configtx.yaml
+index 6f783e2..e8edf58 100644
+--- a/test-network/configtx/configtx.yaml
++++ b/test-network/configtx/configtx.yaml
+@@ -164,8 +164,8 @@ Application: &ApplicationDefaults
+       Type: ImplicitMeta
+       Rule: "MAJORITY Endorsement"
+     Endorsement:
+-      Type: ImplicitMeta
+-      Rule: "MAJORITY Endorsement"
++      Type: Signature
++      Rule: "OR('Org1MSP.peer')"
+   Capabilities:
+     <<: *ApplicationCapabilities
+ ################################################################################
+diff --git a/test-network/scripts/deployCCAAS.sh b/test-network/scripts/deployCCAAS.sh
+index 2cd3c6c..4a637d5 100755
+--- a/test-network/scripts/deployCCAAS.sh
++++ b/test-network/scripts/deployCCAAS.sh
+@@ -15,7 +15,7 @@ CCAAS_DOCKER_RUN=${4:-"true"}
+ CC_VERSION=${5:-"1.0"}
+ CC_SEQUENCE=${6:-"1"}
+ CC_INIT_FCN=${7:-"NA"}
+-CC_END_POLICY=${8:-"NA"}
++CC_END_POLICY=${8:-"OR('Org1.MSP.peer)"}
+ CC_COLL_CONFIG=${9:-"NA"}
+ DELAY=${10:-"3"}
+ MAX_RETRY=${11:-"5"}
+@@ -136,11 +136,11 @@ startDockerContainer() {
+   if [ "$CCAAS_DOCKER_RUN" = "true" ]; then
+     infoln "Starting the Chaincode-as-a-Service docker container..."
+     set -x
+-    ${CONTAINER_CLI} run --rm -d --name peer0org1_${CC_NAME}_ccaas  \
+-                  --network fabric_test \
+-                  -e CHAINCODE_SERVER_ADDRESS=0.0.0.0:${CCAAS_SERVER_PORT} \
+-                  -e CHAINCODE_ID=$PACKAGE_ID -e CORE_CHAINCODE_ID_NAME=$PACKAGE_ID \
+-                    ${CC_NAME}_ccaas_image:latest
++    #${CONTAINER_CLI} run --rm -d --name peer0org1_${CC_NAME}_ccaas  \
++    #              --network fabric_test \
++    #              -e CHAINCODE_SERVER_ADDRESS=0.0.0.0:${CCAAS_SERVER_PORT} \
++    #              -e CHAINCODE_ID=$PACKAGE_ID -e CORE_CHAINCODE_ID_NAME=$PACKAGE_ID \
++    #                ${CC_NAME}_ccaas_image:latest
+ 
+     ${CONTAINER_CLI} run  --rm -d --name peer0org2_${CC_NAME}_ccaas \
+                   --network fabric_test \
+@@ -212,6 +212,8 @@ queryCommitted 2
+ # start the container
+ startDockerContainer
+ 
++sed -i "s/^CHAINCODE_ID=.*/CHAINCODE_ID=$PACKAGE_ID/" ../../.env
++
+ ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+ ## method defined
+ if [ "$CC_INIT_FCN" = "NA" ]; then

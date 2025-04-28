@@ -4,9 +4,9 @@ go 1.22.2
 
 require (
 	github.com/golang/protobuf v1.5.4
+	github.com/google/uuid v1.6.0
 	github.com/hyperledger/fabric-chaincode-go v0.0.0-20240704073638-9fb89180dc17
 	github.com/hyperledger/fabric-protos-go v0.3.7
-	github.com/pkg/errors v0.9.1
 	google.golang.org/grpc v1.71.1
 )
 
