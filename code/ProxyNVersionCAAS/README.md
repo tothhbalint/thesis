@@ -41,10 +41,16 @@ Install the chaincode
 
 Now the docker compose project can be started, from the project root
 
-## Test all functions
+## Test functions
 
 ```
-peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile "${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem" -C mychannel -n peer --peerAddresses localhost:7051 --tlsRootCertFiles "${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"  -c '{"function":"test","Args":[]}'
+./invoke.sh function args..
 ```
 
-## Available functions:
+### Available functions:
+- put key value
+	- put a key with value
+- get key
+	- get a key
+- test 
+	- run most available stub functions, won't result in anything, but tests that every function works
